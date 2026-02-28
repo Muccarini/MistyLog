@@ -10,10 +10,9 @@ use crate::pages;
 
 #[component]
 pub fn App() -> impl IntoView {
-    // Global auth state: fetch current user on mount
-    let user: LocalResource<Option<User>> = LocalResource::new(|| api::fetch_me());
-
-    provide_context(user);
+    // Create a shared auth resource and provide it to all children
+    let user_resource: LocalResource<Option<User>> = LocalResource::new(|| api::fetch_me());
+    provide_context(user_resource);
 
     view! {
         <Router>
