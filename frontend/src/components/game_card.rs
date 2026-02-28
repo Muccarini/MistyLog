@@ -12,11 +12,11 @@ pub fn GameCard(game: Game) -> impl IntoView {
 
     view! {
         <a href=href class="group block">
-            <Card class="overflow-hidden transition-all duration-200 group-hover:ring-2 group-hover:ring-accent/50 group-hover:shadow-lg">
-                // Cover image
+            <Card class="overflow-hidden transition-all duration-200 group-hover:ring-2 group-hover:ring-accent/50 group-hover:shadow-lg h-full flex flex-col">
+                // Cover image - smaller
                 {match game.cover_image_url {
                     Some(url) => view! {
-                        <div class="aspect-[3/4] overflow-hidden">
+                        <div class="aspect-[2/3] overflow-hidden flex-shrink-0">
                             <img
                                 src=url
                                 alt=game.title.clone()
@@ -25,33 +25,34 @@ pub fn GameCard(game: Game) -> impl IntoView {
                         </div>
                     }.into_any(),
                     None => view! {
-                        <div class="aspect-[3/4] bg-muted flex items-center justify-center">
-                            <span class="text-4xl">"🎮"</span>
+                        <div class="aspect-[2/3] bg-muted flex items-center justify-center flex-shrink-0">
+                            <span class="text-2xl">"🎮"</span>
                         </div>
                     }.into_any(),
                 }}
 
-                <CardContent class="p-3">
-                    <h3 class="font-semibold text-sm truncate mb-1 group-hover:text-accent transition-colors">
+                // Text content with more spacing
+                <CardContent class="p-2 flex flex-col gap-2 flex-1">
+                    <h3 class="font-semibold text-xs truncate group-hover:text-accent transition-colors">
                         {game.title}
                     </h3>
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between gap-1 text-[10px]">
                         {if avg > 0.0 {
                             view! {
-                                <div class="flex items-center gap-1">
+                                <div class="flex items-center gap-0.5 flex-1">
                                     <RatingStars rating=avg size="sm" />
-                                    <span class="text-xs text-star font-medium">
+                                    <span class="text-star font-medium">
                                         {format!("{:.1}", avg)}
                                     </span>
                                 </div>
                             }.into_any()
                         } else {
                             view! {
-                                <span class="text-xs text-muted-foreground">"No ratings"</span>
+                                <span class="text-muted-foreground flex-1">"No ratings"</span>
                             }.into_any()
                         }}
                         {game.genre.map(|g| view! {
-                            <Badge class="text-[10px] px-1.5 py-0">{g}</Badge>
+                            <Badge class="text-[9px] px-1 py-0 flex-shrink-0">{g}</Badge>
                         })}
                     </div>
                 </CardContent>

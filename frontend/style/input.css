@@ -11,17 +11,17 @@
     --card-foreground: 222 225 230;
     --muted: 35 38 48;
     --muted-foreground: 140 145 160;
-    --accent: 0 210 120;
-    --accent-foreground: 14 14 21;
+    --accent: 124 58 237;
+    --accent-foreground: 255 255 255;
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
     --border: 45 48 60;
-    --ring: 0 210 120;
+    --ring: 124 58 237;
     --star: 255 195 0;
 
     /* shadcn/ui required tokens */
-    --primary: 0 210 120;
-    --primary-foreground: 14 14 21;
+    --primary: 124 58 237;
+    --primary-foreground: 255 255 255;
     --secondary: 35 38 48;
     --secondary-foreground: 222 225 230;
     --input: 45 48 60;

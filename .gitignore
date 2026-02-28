@@ -8,7 +8,7 @@
 **/target/
 
 # Frontend tooling
-/node_modules/
+**/node_modules/
 frontend/dist/
 frontend/.trunk/
 frontend/.cache/

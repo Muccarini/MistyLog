@@ -3,6 +3,7 @@ mod app;
 mod components;
 mod pages;
 mod shadcn_classes;
+mod mock_data;
 
 fn main() {
     console_error_panic_hook::set_once();

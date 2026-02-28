@@ -1,0 +1,10 @@
+{
+  "name": "mistylog-frontend",
+  "version": "0.1.0",
+  "scripts": {
+    "css": "tailwindcss -i style/input.css -o style/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3"
+  }
+}

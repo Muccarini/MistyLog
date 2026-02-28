@@ -6,6 +6,7 @@ use leptos_shadcn_skeleton::Skeleton;
 
 use crate::api;
 use crate::components::game_card::GameCard;
+use crate::mock_data;
 
 #[component]
 pub fn GameList() -> impl IntoView {
@@ -91,15 +92,24 @@ pub fn GameList() -> impl IntoView {
                                 }.into_any()
                             }
                         },
-                        Err(e) => view! {
-                            <Card>
-                                <CardContent>
-                                    <p class="py-8 text-center text-destructive">
-                                        {format!("Error loading games: {e}")}
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        }.into_any(),
+                        Err(_) => {
+                            // Fallback to mock data when API is unavailable
+                            let mock_games = mock_data::get_mock_games();
+                            let cards = mock_games.into_iter().map(|game| {
+                                view! { <GameCard game=game /> }
+                            }).collect::<Vec<_>>();
+
+                            view! {
+                                <div>
+                                    <div class="mb-4 p-3 bg-accent/10 border border-accent rounded-lg text-sm text-accent">
+                                        "📝 Showing demo games (backend unavailable)"
+                                    </div>
+                                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                                        {cards}
+                                    </div>
+                                </div>
+                            }.into_any()
+                        },
                     }
                 })}
             </Suspense>

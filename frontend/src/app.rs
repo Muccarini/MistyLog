@@ -28,7 +28,7 @@ pub fn App() -> impl IntoView {
                     </Routes>
                 </main>
                 <footer class="border-t border-border py-6 text-center text-sm text-muted-foreground">
-                    <p>"GameReview — a Letterboxd for games"</p>
+                    <p>"MistyLog — a Letterboxd for games"</p>
                 </footer>
             </div>
         </Router>

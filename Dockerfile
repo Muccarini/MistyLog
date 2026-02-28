@@ -24,9 +24,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates libssl3 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /app/target/release/backend /usr/local/bin/gamereview-backend
+COPY --from=builder /app/target/release/backend /usr/local/bin/mistylog-backend
 
 ENV RUST_LOG=info
 EXPOSE 8090
 
-CMD ["gamereview-backend"]
+CMD ["mistylog-backend"]

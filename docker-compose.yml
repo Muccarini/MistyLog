@@ -2,12 +2,12 @@ services:
   # ─── PostgreSQL ─────────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
-    container_name: gamereview-postgres
+    container_name: mistylog-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
-      POSTGRES_DB: ${POSTGRES_DB:-gamereview}
+      POSTGRES_DB: ${POSTGRES_DB:-mistylog}
     ports:
       - "5432:5432"
     volumes:
@@ -21,7 +21,7 @@ services:
   # ─── Redis (session store) ──────────────────────────────────
   redis:
     image: redis:7-alpine
-    container_name: gamereview-redis
+    container_name: mistylog-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
@@ -36,7 +36,7 @@ services:
   # ─── Zitadel (self-hosted OIDC IdP) ────────────────────────
   zitadel:
     image: ghcr.io/zitadel/zitadel:latest
-    container_name: gamereview-zitadel
+    container_name: mistylog-zitadel
     restart: unless-stopped
     command: start-from-init --masterkeyFromEnv --tlsMode disabled
     environment:
@@ -53,7 +53,7 @@ services:
       ZITADEL_EXTERNALSECURE: "false"
       ZITADEL_EXTERNALPORT: 8080
       ZITADEL_EXTERNALDOMAIN: localhost
-      ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME: ${ZITADEL_ADMIN_USERNAME:-admin@gamereview.localhost}
+      ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME: ${ZITADEL_ADMIN_USERNAME:-admin@mistylog.localhost}
       ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD: ${ZITADEL_ADMIN_PASSWORD:-change_me}
     ports:
       - "8080:8080"
@@ -64,7 +64,7 @@ services:
   # ─── Zitadel's own Postgres (isolated) ─────────────────────
   zitadel-db:
     image: postgres:16-alpine
-    container_name: gamereview-zitadel-db
+    container_name: mistylog-zitadel-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${ZITADEL_DB_ADMIN_USER:-postgres}

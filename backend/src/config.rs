@@ -1,3 +1,4 @@
+#[derive(Clone, Debug)]
 pub struct AppConfig {
     pub database_url: String,
     pub host: String,
@@ -27,17 +28,17 @@ impl AppConfig {
 
         Self {
             database_url: std::env::var("DATABASE_URL")
-                .unwrap_or_else(|_| "postgres://postgres:postgres@localhost:5432/gamereview".into()),
+                .unwrap_or_else(|_| "postgres://postgres:postgres@localhost:5432/mistylog".into()),
             host,
             port,
             rawg_api_key: std::env::var("RAWG_API_KEY").unwrap_or_default(),
-            frontend_url,
+            frontend_url: frontend_url.clone(),
             zitadel_issuer: std::env::var("ZITADEL_ISSUER")
                 .unwrap_or_else(|_| "http://localhost:8080".into()),
             zitadel_client_id: std::env::var("ZITADEL_CLIENT_ID")
-                .unwrap_or_else(|_| "gamereview-app".into()),
+                .unwrap_or_else(|_| "mistylog-app".into()),
             zitadel_redirect_uri: std::env::var("ZITADEL_REDIRECT_URI")
-                .unwrap_or_else(|_| format!("{}/api/auth/callback", backend_url)),
+                .unwrap_or_else(|_| format!("{}/api/auth/callback", backend_url.clone())),
             zitadel_post_logout_uri: std::env::var("ZITADEL_POST_LOGOUT_URI")
                 .unwrap_or_else(|_| frontend_url.clone()),
             session_secret: std::env::var("SESSION_SECRET").unwrap_or_else(|_| {

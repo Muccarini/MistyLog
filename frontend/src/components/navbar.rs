@@ -62,7 +62,7 @@ pub fn Navbar() -> impl IntoView {
             <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
                 // Logo
                 <a href="/" class="text-xl font-bold tracking-tight text-foreground">
-                    <span class="text-accent">"Game"</span>"Review"
+                    <span class="text-accent">"Misty"</span>"Log"
                 </a>
 
                 // Navigation links

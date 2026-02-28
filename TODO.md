@@ -1,4 +1,4 @@
-# GameReview — TODO
+# MistyLog — TODO
 
 ## Tech Stack (Decided)
 - **Frontend:** Leptos 0.7 (WASM SPA via Trunk) + Tailwind CSS + leptos-shadcn-ui
