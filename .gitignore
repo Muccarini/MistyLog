@@ -1,0 +1,24 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Rust / Cargo
+/target/
+**/target/
+
+# Frontend tooling
+/node_modules/
+frontend/dist/
+frontend/.trunk/
+frontend/.cache/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
