@@ -13,7 +13,7 @@ pub fn GameCard(game: Game) -> impl IntoView {
     view! {
         <a href=href class="group block">
             <Card class="overflow-hidden transition-all duration-200 group-hover:ring-2 group-hover:ring-accent/50 group-hover:shadow-lg h-full flex flex-col">
-                // Cover image - smaller
+                // Cover image
                 {match game.cover_image_url {
                     Some(url) => view! {
                         <div class="aspect-[2/3] overflow-hidden flex-shrink-0">
@@ -32,7 +32,7 @@ pub fn GameCard(game: Game) -> impl IntoView {
                 }}
 
                 // Text content with more spacing
-                <CardContent class="p-2 flex flex-col gap-2 flex-1">
+                <CardContent class="pt-3 flex flex-col gap-2 flex-1">
                     <h3 class="font-semibold text-xs truncate group-hover:text-accent transition-colors">
                         {game.title}
                     </h3>
